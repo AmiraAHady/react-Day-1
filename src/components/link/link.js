@@ -3,8 +3,8 @@ const Link = (props) => {
     
   return (
     <>
-      <li>
-        <a href={props.data}>{props.content}</a>
+      <li className="nav-item">
+        <a className="nav-link" href={props.data}>{props.content}</a>
       </li>
     </>
   );
