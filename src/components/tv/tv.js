@@ -2,17 +2,17 @@ import axios from "axios";
 import { Button } from "bootstrap";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function Tv() {
   //react Hooks
   let [tvShows, setTvshows] = useState([]);
-  let [isAuth, setIsAuth] = useState(true);
-  let [showDetails, setShowDetails] = useState(true);
+  let lang = useSelector((state) => state.lang);
 
   useEffect(() => {
     axios
       .get(
-        "https://api.themoviedb.org/3/tv/popular?api_key=790392d65f15e65ab054f72d158f72c2&language=en-US&page=3"
+        `https://api.themoviedb.org/3/tv/popular?api_key=790392d65f15e65ab054f72d158f72c2&language=${lang}&page=1`
       )
       .then((tvData) => {
         console.log(tvData.data.results);
@@ -21,7 +21,7 @@ export default function Tv() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [lang]);
 
   let toggleDetails = (tvid) => {
     let newTvs = tvShows.filter((tv) => {

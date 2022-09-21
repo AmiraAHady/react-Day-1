@@ -9,6 +9,7 @@ import Moviedetails from "./components/moviesDtails/movieDetails";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Products from "./components/products/product";
 import Productdetails from "./components/productDetails/product details";
+import Favs from "./components/favs/favs";
 
 function App() {
   var title = "Movies";
@@ -24,6 +25,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/tvs" component={Tv} />
         <Route path="/products" component={Products} />
+        <Route path="/favs" component={Favs} />
         <Route path="/productdetails/:id" component={Productdetails} />
       </Router>
     </>

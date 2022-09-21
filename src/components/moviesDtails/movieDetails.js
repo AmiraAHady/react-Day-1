@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 import "./movieDetails.css"
@@ -8,11 +9,12 @@ function Moviedetails() {
   let params = useParams();
 
   let [movie, setMovie] = useState({});
+  let lang = useSelector((state) => state.lang);
 
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${params.id}?api_key=790392d65f15e65ab054f72d158f72c2&language=en-US`
+        `https://api.themoviedb.org/3/movie/${params.id}?api_key=790392d65f15e65ab054f72d158f72c2&language=${lang}`
       )
       .then((singleMovie) => {
         console.log(singleMovie.data);
@@ -21,7 +23,7 @@ function Moviedetails() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [lang]);
   return (
     <>
     <div className="container">
@@ -35,7 +37,7 @@ function Moviedetails() {
                 
                 <p class="time">{movie.runtime} Min</p>
               </div>
-              <p class="disc">{movie.overview}</p>
+              <h4 class="disc">{movie.overview}</h4>
               
             </div>
           </div>
