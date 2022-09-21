@@ -2,7 +2,7 @@ import React from "react";
 import "./navbar.css";
 // import HomeIcon from "@mui/material/Icon";
 // import Icon from "@mui/material/Icon";
-import Link from "../link/link";
+import NavLink from "../link/link";
 
 class Navbar extends React.Component {
   constructor() {
@@ -11,26 +11,27 @@ class Navbar extends React.Component {
       counter: 1,
       x: 30,
       navelements: [
-        { data: "#home", content: "Home" },
-        { data: "#news", content: "News" },
-        { data: "#contact", content: "Contact" },
-        { data: "#about", content: "About" },
+        { data: "/", content: "Home" },
+        { data: "/movies", content: "Movies" },
+        { data: "/tvs", content: "Tvs" },
+        { data: "/products", content: "Products" },
+        // { data: "#about", content: "About" },
       ],
     };
-    console.log("hello from constructor");
+    // console.log("hello from constructor");
   }
 
-  componentDidMount() {
-    //lifecycle Hook
-    console.log("hello from didMount");
-  }
+  // componentDidMount() {
+  //   //lifecycle Hook
+  //   console.log("hello from didMount");
+  // }
 
-  componentDidUpdate() {
-    console.log("hello from didupdate");
-  }
-  componentWillUnmount() {
-    //clean up
-  }
+  // componentDidUpdate() {
+  //   console.log("hello from didupdate");
+  // }
+  // componentWillUnmount() {
+  //   //clean up
+  // }
 
   handelIncrement = () => {
     this.setState({ counter: ++this.state.counter }); //object destructure
@@ -42,6 +43,7 @@ class Navbar extends React.Component {
       <>
         {/* <HomeIcon color="success" /> */}
         {/* <Icon>star</Icon>; */}
+        <div className="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="#">
             {/* <HomeIcon color="success" /> */}
@@ -61,7 +63,7 @@ class Navbar extends React.Component {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               {this.state.navelements.map((item) => (
-                <Link data={item.data} content={item.content} />
+                <NavLink data={item.data} content={item.content} />
               ))}
               {/* <Link data="#home" content="Home" />
               <Link data="#news" content="News" />
@@ -70,6 +72,7 @@ class Navbar extends React.Component {
             </ul>
           </div>
         </nav>
+        </div>
         {/* <h2>{this.state.counter}</h2>
         <p>{this.state.x}</p>
         <button onClick={this.handelIncrement}>increment Counter</button>

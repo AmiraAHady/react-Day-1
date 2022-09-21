@@ -1,13 +1,18 @@
-const Link = (props) => {
-    console.log(props)
-    
+import React from "react";
+import { Link } from "react-router-dom";
+
+const NavLink = (props) => {
+  console.log(props);
+
   return (
     <>
       <li className="nav-item">
-        <a className="nav-link" href={props.data}>{props.content}</a>
+        <Link className="nav-link" to={props.data}>
+          {props.content}
+        </Link>
       </li>
     </>
   );
 };
 
-export default Link;
+export default NavLink;
